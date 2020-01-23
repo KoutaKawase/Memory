@@ -36,6 +36,16 @@
 			"type": "script",
 			"path": "script/parameterObject.js",
 			"global": true
+		},
+		"Card": {
+			"type": "script",
+			"path": "script/Card.js",
+			"global": true
+		},
+		"Deck": {
+			"type": "script",
+			"path": "script/Deck.js",
+			"global": true
 		}
 	},
 	"environment": {

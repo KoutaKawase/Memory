@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "lib": ["es5"],
+    "lib": ["es5", "dom"],
     "noImplicitAny": true,
-    "module": "commonjs" ,
+    "module": "commonjs",
     "outDir": "./script",
-    "types" : []
+    "types": []
   },
-  "files": [
-    "node_modules/@akashic/akashic-engine/lib/main.d.ts"
-  ],
-  "include": [
-    "./src/**/*.ts"
-  ]
+  "files": ["node_modules/@akashic/akashic-engine/lib/main.d.ts"],
+  "include": ["./src/**/*.ts"]
 }
