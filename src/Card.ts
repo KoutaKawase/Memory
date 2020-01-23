@@ -41,9 +41,9 @@ export class Card {
       for (const card of list) {
         card.back.touchable = true;
         card.back.modified();
-        referee.resetCount();
       }
-    }, 1350);
+      referee.resetCount();
+    }, 1300);
   }
 
   get back(): g.Sprite {
