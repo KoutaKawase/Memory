@@ -5,6 +5,7 @@ export function createSprite(
   y = 0
 ): g.Sprite {
   return new g.Sprite({
+    touchable: true,
     scene: scene,
     src: scene.assets[assetID] as g.ImageAsset,
     x: x,

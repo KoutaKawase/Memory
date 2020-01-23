@@ -43,13 +43,18 @@ export function main(param: GameMainParameterObject): void {
 
     const board = new Board(new g.E({ scene: scene, y: Board.posY }));
 
+    //全てのカードバックをグループに入れる
     for (const card of deck.cardList) {
       board.group.append(card.back);
     }
 
+    //全てのカードにクリックハンドラ設定
     for (const card of deck.cardList) {
       card.back.pointDown.add(() => {
-        console.log("hello");
+        card.back.destroy();
+        card.back.modified();
+        board.group.append(card.surface);
+        board.group.modified();
       });
     }
 
