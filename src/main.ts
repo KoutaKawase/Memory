@@ -36,7 +36,7 @@ export function main(param: GameMainParameterObject): void {
     //3*10で計30枚のカードのデッキを作成
     const deck = new Deck();
     deck.init(scene);
-    scene.append(deck.cardList[10].surface);
+    console.log(deck.cardList);
     //シャッフルして配置
     //プレイヤーが好きな二枚を選び裏を見る
     //同じ数字であればその二枚を画面から消し5000pt追加　異なる場合伏せてもう一度
