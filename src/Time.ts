@@ -1,8 +1,8 @@
 export class Time {
   private _limit: number;
   private _now: number;
-  private labelX: number = g.game.width - 200;
-  private labelY: number = 15;
+  static readonly labelX: number = g.game.width - 200;
+  static readonly labelY: number = 15;
   private _label: g.Label;
 
   constructor(limit: number) {
@@ -36,8 +36,8 @@ export class Time {
       text: "TIME " + this._limit,
       fontSize: 20,
       font: font,
-      x: this.labelX,
-      y: this.labelY
+      x: Time.labelX,
+      y: Time.labelY
     });
   }
 }

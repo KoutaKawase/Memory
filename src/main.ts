@@ -58,8 +58,10 @@ export function main(param: GameMainParameterObject): void {
     });
 
     time.label = time.createLabel(font, scene);
+    score.label = score.createLabel(font, scene);
 
     scene.append(time.label);
+    scene.append(score.label);
 
     const board = new Board(new g.E({ scene: scene, y: Board.posY }));
 
