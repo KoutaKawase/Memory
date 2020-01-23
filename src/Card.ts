@@ -1,3 +1,5 @@
+import { Referee } from "./Referee";
+
 export class Card {
   private _back: g.Sprite;
   private _surface: g.Sprite;
@@ -16,14 +18,32 @@ export class Card {
     this._surface.y = y;
   }
 
-  public handleClick(scene: g.Scene) {
+  public handleClick(
+    scene: g.Scene,
+    group: g.E,
+    referee: Referee,
+    list: Card[]
+  ) {
+    referee.incrementCount();
+
+    if (referee.clickCount === 2) {
+      for (const card of list) {
+        card.back.touchable = false;
+        card.back.modified();
+      }
+    }
     this.back.opacity = 0;
     this.back.modified();
 
     scene.setTimeout(() => {
       this.back.opacity = 1;
       this.back.modified();
-    }, 1200);
+      for (const card of list) {
+        card.back.touchable = true;
+        card.back.modified();
+        referee.resetCount();
+      }
+    }, 1350);
   }
 
   get back(): g.Sprite {

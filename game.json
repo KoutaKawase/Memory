@@ -140,6 +140,11 @@
 			"type": "script",
 			"path": "script/Board.js",
 			"global": true
+		},
+		"Referee": {
+			"type": "script",
+			"path": "script/Referee.js",
+			"global": true
 		}
 	},
 	"environment": {

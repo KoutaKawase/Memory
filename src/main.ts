@@ -1,6 +1,7 @@
 import { GameMainParameterObject, RPGAtsumaruWindow } from "./parameterObject";
 import { Deck } from "./Deck";
 import { Board } from "./Board";
+import { Referee } from "./Referee";
 
 declare const window: RPGAtsumaruWindow;
 
@@ -49,16 +50,12 @@ export function main(param: GameMainParameterObject): void {
       board.group.append(card.back);
     }
 
+    const referee = new Referee();
+
     //全てのカードにクリックハンドラ設定
     for (const card of deck.cardList) {
       card.back.pointDown.add(() => {
-        card.back.opacity = 0;
-        card.back.modified();
-
-        scene.setTimeout(() => {
-          card.back.opacity = 1;
-          card.back.modified();
-        }, 1200);
+        card.handleClick(scene, board.group, referee, deck.cardList);
       });
     }
 
