@@ -40,6 +40,101 @@
 			"width": 63,
 			"height": 101,
 			"path": "image/cardBack.png"
+		},
+		"m10": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m10.jpg"
+		},
+		"m11": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m11.jpg"
+		},
+		"m12": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m12.jpg"
+		},
+		"m13": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m13.jpg"
+		},
+		"m14": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m14.jpg"
+		},
+		"m15": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m15.jpg"
+		},
+		"m2": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m2.jpg"
+		},
+		"m3": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m3.jpg"
+		},
+		"m4": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m4.jpg"
+		},
+		"m5": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m5.jpg"
+		},
+		"m6": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m6.jpg"
+		},
+		"m7": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m7.jpg"
+		},
+		"m8": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m8.jpg"
+		},
+		"m9": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m9.jpg"
+		},
+		"SpriteFactory": {
+			"type": "script",
+			"path": "script/utils/SpriteFactory.js",
+			"global": true
+		},
+		"m1": {
+			"type": "image",
+			"width": 73,
+			"height": 120,
+			"path": "image/m1.jpg"
 		}
 	},
 	"environment": {
