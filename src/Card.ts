@@ -16,6 +16,16 @@ export class Card {
     this._surface.y = y;
   }
 
+  public handleClick(scene: g.Scene) {
+    this.back.opacity = 0;
+    this.back.modified();
+
+    scene.setTimeout(() => {
+      this.back.opacity = 1;
+      this.back.modified();
+    }, 1200);
+  }
+
   get back(): g.Sprite {
     return this._back;
   }
