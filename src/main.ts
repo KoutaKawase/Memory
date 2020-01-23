@@ -2,6 +2,9 @@ import { GameMainParameterObject, RPGAtsumaruWindow } from "./parameterObject";
 import { Deck } from "./Deck";
 import { Board } from "./Board";
 import { Referee } from "./Referee";
+import { Score } from "./Score";
+import { Time } from "./Time";
+import { createLabel } from "./utils/LebelFactory";
 
 declare const window: RPGAtsumaruWindow;
 
@@ -24,12 +27,17 @@ export function main(param: GameMainParameterObject): void {
       "m13",
       "m14",
       "m15",
-      "cardBack"
+      "cardBack",
+      "bmpPng",
+      "glyph"
     ]
   });
-  let time = 60; // 制限時間
+
+  const score = new Score();
+  const time = new Time(100);
+
   if (param.sessionParameter.totalTimeLimit) {
-    time = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
+    time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
   }
   // 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います
   g.game.vars.gameState = { score: 0 };
@@ -42,9 +50,20 @@ export function main(param: GameMainParameterObject): void {
     deck.shuffle();
     deck.calclateCardsPosition();
 
+    const font = new g.BitmapFont({
+      src: scene.assets["bmpPng"],
+      map: JSON.parse((scene.assets["glyph"] as g.TextAsset).data),
+      defaultGlyphWidth: 16,
+      defaultGlyphHeight: 16
+    });
+
+    time.label = time.createLabel(font, scene);
+
+    scene.append(time.label);
+
     const board = new Board(new g.E({ scene: scene, y: Board.posY }));
 
-    //全てのカードバックをグループに入れる
+    //全てのカードバックをグループに入れ
     for (const card of deck.cardList) {
       board.group.append(card.surface);
       board.group.append(card.back);
@@ -64,7 +83,7 @@ export function main(param: GameMainParameterObject): void {
     //同じ数字であればその二枚を画面から消し5000pt追加　異なる場合伏せてもう一度
 
     const updateHandler = () => {
-      if (time <= 0) {
+      if (time.now <= 0) {
         // RPGアツマール環境であればランキングを表示します
         if (param.isAtsumaru) {
           const boardId = 1;
@@ -76,6 +95,10 @@ export function main(param: GameMainParameterObject): void {
         }
         scene.update.remove(updateHandler); // カウントダウンを止めるためにこのイベントハンドラを削除します
       }
+
+      time.now -= 1 / g.game.fps;
+      time.label.text = "TIME " + time.now;
+      time.label.invalidate();
     };
     scene.update.add(updateHandler);
     // ここまでゲーム内容を記述します
