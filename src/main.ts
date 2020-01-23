@@ -1,5 +1,6 @@
 import { GameMainParameterObject, RPGAtsumaruWindow } from "./parameterObject";
 import { Deck } from "./Deck";
+import { Board } from "./Board";
 
 declare const window: RPGAtsumaruWindow;
 
@@ -38,7 +39,15 @@ export function main(param: GameMainParameterObject): void {
     deck.init(scene);
     //シャッフルして配置
     deck.shuffle();
-    scene.append(deck.cardList[0].surface);
+    deck.calclateCardsPosition();
+
+    const board = new Board(new g.E({ scene: scene, y: Board.posY }));
+
+    for (const card of deck.cardList) {
+      board.group.append(card.back);
+    }
+
+    scene.append(board.group);
     //プレイヤーが好きな二枚を選び裏を見る
     //同じ数字であればその二枚を画面から消し5000pt追加　異なる場合伏せてもう一度
 
