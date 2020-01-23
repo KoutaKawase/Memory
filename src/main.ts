@@ -45,16 +45,20 @@ export function main(param: GameMainParameterObject): void {
 
     //全てのカードバックをグループに入れる
     for (const card of deck.cardList) {
+      board.group.append(card.surface);
       board.group.append(card.back);
     }
 
     //全てのカードにクリックハンドラ設定
     for (const card of deck.cardList) {
       card.back.pointDown.add(() => {
-        card.back.destroy();
+        card.back.opacity = 0;
         card.back.modified();
-        board.group.append(card.surface);
-        board.group.modified();
+
+        scene.setTimeout(() => {
+          card.back.opacity = 1;
+          card.back.modified();
+        }, 1200);
       });
     }
 
