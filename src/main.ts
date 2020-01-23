@@ -47,6 +47,12 @@ export function main(param: GameMainParameterObject): void {
       board.group.append(card.back);
     }
 
+    for (const card of deck.cardList) {
+      card.back.pointDown.add(() => {
+        console.log("hello");
+      });
+    }
+
     scene.append(board.group);
     //プレイヤーが好きな二枚を選び裏を見る
     //同じ数字であればその二枚を画面から消し5000pt追加　異なる場合伏せてもう一度

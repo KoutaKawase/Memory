@@ -1,7 +1,7 @@
 export class Card {
   private _back: g.Sprite;
   private _surface: g.Sprite;
-  static readonly width = 73;
+  static readonly width = 63;
   static readonly height = 101;
 
   constructor(back: g.Sprite, surface: g.Sprite) {
