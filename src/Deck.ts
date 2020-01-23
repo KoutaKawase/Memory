@@ -11,6 +11,16 @@ export class Deck {
     this._cardList = this.createFullDeck(scene);
   }
 
+  public shuffle(): void {
+    //cardListを複製
+    const list = this._cardList.concat();
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(g.game.random.generate() * (i + 1));
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+    this._cardList = list.concat();
+  }
+
   private createFullDeck(scene: g.Scene): Card[] {
     const cardList: Card[] = [];
     //同じカードを二枚持った30枚構成にするために二回する
