@@ -4,6 +4,14 @@ export class Score {
   static readonly labelX = 20;
   static readonly labelY = 15;
 
+  constructor(score: number) {
+    this._score = score;
+  }
+
+  get score(): number {
+    return this._score;
+  }
+
   set label(label: g.Label) {
     this._label = label;
   }

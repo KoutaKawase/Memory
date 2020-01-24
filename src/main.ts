@@ -33,14 +33,13 @@ export function main(param: GameMainParameterObject): void {
     ]
   });
 
-  const score = new Score();
+  g.game.vars.gameState = { score: 0 };
+  const score = new Score(g.game.vars.gameState.score);
   const time = new Time(100);
 
   if (param.sessionParameter.totalTimeLimit) {
     time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
   }
-  // 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います
-  g.game.vars.gameState = { score: 0 };
 
   scene.loaded.add(() => {
     //3*10で計30枚のカードのデッキを作成
