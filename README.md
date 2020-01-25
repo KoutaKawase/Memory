@@ -15,6 +15,6 @@
 
 普通に神経衰弱するだけです
 
-##　 👌 LICENSE
+## 👌 LICENSE
 
 MIT
