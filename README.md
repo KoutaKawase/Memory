@@ -1,4 +1,4 @@
-![face](https://user-images.githubusercontent.com/37544784/73123220-1ae2b000-3fd1-11ea-9a00-aa4135666e92.jpg)
+![play](./gif/play.gif)
 
 <h2 align="center">オタまさ神経衰弱</h2>
 
