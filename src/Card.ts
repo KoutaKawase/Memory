@@ -44,7 +44,7 @@ export class Card {
 
     //正解した時
     if (referee.clickCount === 2 && referee.checkSameCard()) {
-      score.addPoint();
+      score.addPoint(referee.continuousCurrentCount);
       list.forEach(card => {
         if (card.id === this._id) {
           card.back.destroy();
@@ -53,6 +53,11 @@ export class Card {
           card.surface.modified();
         }
       });
+      referee.continuousCurrentCount += 1;
+    }
+
+    if (referee.clickCount === 2 && !referee.checkSameCard()) {
+      referee.continuousCurrentCount = 0;
     }
 
     this.back.opacity = 0;

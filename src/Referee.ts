@@ -3,6 +3,8 @@ import { Card } from "./Card";
 export class Referee {
   private _clickCount: number = 0;
   private _choicedCard: Card[] = [];
+  //連続性回数をカウントする
+  private _continuousCurrentCount: number = 0;
 
   public incrementCount(): void {
     this._clickCount++;
@@ -10,6 +12,14 @@ export class Referee {
 
   get clickCount(): number {
     return this._clickCount;
+  }
+
+  get continuousCurrentCount(): number {
+    return this._continuousCurrentCount;
+  }
+
+  set continuousCurrentCount(count: number) {
+    this._continuousCurrentCount = count;
   }
 
   get choicedCard(): Card[] {

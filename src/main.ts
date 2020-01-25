@@ -35,7 +35,7 @@ export function main(param: GameMainParameterObject): void {
 
   g.game.vars.gameState = { score: 0 };
   const score = new Score(g.game.vars.gameState.score);
-  const time = new Time(10);
+  const time = new Time(50);
 
   if (param.sessionParameter.totalTimeLimit) {
     time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します

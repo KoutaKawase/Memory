@@ -12,7 +12,12 @@ export class Score {
     return this._score;
   }
 
-  public addPoint(): void {
+  public addPoint(currentCount: number): void {
+    if (currentCount > 0) {
+      //連続正解１回なら1.1倍 二回なら1.2倍にする
+      this._score += 3000 * (1 + currentCount / 10);
+      return;
+    }
     this._score += 3000;
   }
 
