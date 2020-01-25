@@ -35,7 +35,7 @@ export function main(param: GameMainParameterObject): void {
 
   g.game.vars.gameState = { score: 0 };
   const score = new Score(g.game.vars.gameState.score);
-  const time = new Time(100);
+  const time = new Time(55);
 
   if (param.sessionParameter.totalTimeLimit) {
     time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
@@ -75,7 +75,7 @@ export function main(param: GameMainParameterObject): void {
     //全てのカードにクリックハンドラ設定
     for (const card of deck.cardList) {
       card.back.pointDown.add(() => {
-        card.handleClick(scene, referee, deck.cardList, score);
+        card.handleClick(scene, referee, deck.cardList, score, board, time);
       });
     }
 
@@ -86,6 +86,10 @@ export function main(param: GameMainParameterObject): void {
         for (const card of deck.cardList) {
           card.back.touchable = false;
           card.back.modified();
+        }
+
+        if (g.game.vars.gameState.allDone) {
+          console.log("REST: " + g.game.vars.gameState.restTIme);
         }
 
         g.game.vars.gameState.score = score.calcFinalScore();

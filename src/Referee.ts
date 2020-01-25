@@ -1,4 +1,5 @@
 import { Card } from "./Card";
+import { Board } from "./Board";
 // ゲームの様々な判定を行うクラス
 export class Referee {
   private _clickCount: number = 0;
@@ -40,6 +41,10 @@ export class Referee {
     if (this._choicedCard.length === 2) {
       this._choicedCard = [];
     }
+  }
+
+  public isAllDone(board: Board): boolean {
+    return board.group.children.length === 0;
   }
 
   public checkSameCard(): boolean {

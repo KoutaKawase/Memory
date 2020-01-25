@@ -1,5 +1,7 @@
 import { Score } from "./Score";
 import { Referee } from "./Referee";
+import { Board } from "./Board";
+import { Time } from "./Time";
 
 export class Card {
   private _back: g.Sprite;
@@ -30,7 +32,9 @@ export class Card {
     scene: g.Scene,
     referee: Referee,
     list: Card[],
-    score: Score
+    score: Score,
+    board: Board,
+    time: Time
   ) {
     referee.incrementCount();
     referee.keepChoicedCard(this);
@@ -53,6 +57,11 @@ export class Card {
           card.surface.modified();
         }
       });
+      if (referee.isAllDone(board)) {
+        g.game.vars.gameState.allDone = true;
+        //全て完了した時点での残り時間
+        g.game.vars.gameState.restTIme = Math.ceil(time.now);
+      }
       referee.continuousCurrentCount += 1;
     }
 
@@ -68,11 +77,11 @@ export class Card {
     //二回目の時だけ元に戻す処理をする
     if (referee.clickCount === 2) {
       scene.setTimeout(() => {
-        this.back.opacity = 1;
+        this.back.opacity = 0;
         this.back.modified();
 
         //１つめに選んだモノを元に戻す
-        referee.choicedCard[0].back.opacity = 1;
+        referee.choicedCard[0].back.opacity = 0;
 
         for (const card of list) {
           card.back.touchable = true;
