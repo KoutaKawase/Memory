@@ -45,9 +45,10 @@ export class Deck {
       for (let i = 0; i < 15; i++) {
         const back: g.Sprite = createSprite(scene, "cardBack");
         const surfaceAssetID = "m" + (i + 1);
+        const id = i + 1;
         const surface: g.Sprite = createSprite(scene, surfaceAssetID);
         //30枚にする必要があるので二回する
-        cardList.push(new Card(back, surface));
+        cardList.push(new Card(back, surface, id));
       }
     }
 

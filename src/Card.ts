@@ -3,12 +3,15 @@ import { Referee } from "./Referee";
 export class Card {
   private _back: g.Sprite;
   private _surface: g.Sprite;
+  private _id: number;
   static readonly width = 63;
   static readonly height = 101;
 
-  constructor(back: g.Sprite, surface: g.Sprite) {
+  constructor(back: g.Sprite, surface: g.Sprite, id: number) {
     this._back = back;
     this._surface = surface;
+    //カードのバリューを判断するために使うid m1なら1 m2なら2
+    this._id = id;
   }
 
   public setPosition(x: number, y: number): void {
@@ -33,6 +36,7 @@ export class Card {
       }
     }
     this.back.opacity = 0;
+    console.log(this._id);
     this.back.modified();
 
     scene.setTimeout(() => {
