@@ -14,6 +14,10 @@ export class Card {
     this._id = id;
   }
 
+  get id(): number {
+    return this._id;
+  }
+
   public setPosition(x: number, y: number): void {
     this._back.x = x;
     this._back.y = y;
@@ -28,6 +32,7 @@ export class Card {
     list: Card[]
   ) {
     referee.incrementCount();
+    referee.keepChoicedCard(this);
 
     if (referee.clickCount === 2) {
       for (const card of list) {
@@ -35,19 +40,37 @@ export class Card {
         card.back.modified();
       }
     }
+
+    console.log("COUNT: " + referee.clickCount);
+
+    //正解した時
+    if (referee.clickCount === 2 && referee.checkSameCard()) {
+      console.log("TRUE");
+    }
+
     this.back.opacity = 0;
-    console.log(this._id);
+    //一度クリックした画像はもう押せないようにする
+    this.back.touchable = false;
     this.back.modified();
 
-    scene.setTimeout(() => {
-      this.back.opacity = 1;
-      this.back.modified();
-      for (const card of list) {
-        card.back.touchable = true;
-        card.back.modified();
-      }
-      referee.resetCount();
-    }, 1300);
+    //二回目の時だけ元に戻す処理をする
+    if (referee.clickCount === 2) {
+      scene.setTimeout(() => {
+        this.back.opacity = 1;
+        this.back.modified();
+
+        //１つめに選んだモノを元に戻す
+        referee.choicedCard[0].back.opacity = 1;
+
+        for (const card of list) {
+          card.back.touchable = true;
+          card.back.modified();
+        }
+
+        referee.resetChoicedCards();
+        referee.resetCount();
+      }, 1300);
+    }
   }
 
   get back(): g.Sprite {
