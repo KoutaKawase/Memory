@@ -4,12 +4,6 @@
 	"fps": 30,
 	"main": "./script/_bootstrap.js",
 	"assets": {
-		"se": {
-			"type": "audio",
-			"path": "audio/se",
-			"systemId": "sound",
-			"duration": 250
-		},
 		"cardBack": {
 			"type": "image",
 			"width": 63,
@@ -170,6 +164,36 @@
 			"type": "script",
 			"path": "script/utils/SpriteFactory.js",
 			"global": true
+		},
+		"finishSound": {
+			"type": "audio",
+			"path": "audio/finishSound",
+			"systemId": "sound",
+			"duration": 2737
+		},
+		"ok": {
+			"type": "audio",
+			"path": "audio/ok",
+			"systemId": "sound",
+			"duration": 658
+		},
+		"bgm": {
+			"type": "audio",
+			"path": "audio/bgm",
+			"systemId": "music",
+			"duration": 8650
+		},
+		"select": {
+			"type": "audio",
+			"path": "audio/select",
+			"systemId": "sound",
+			"duration": 340
+		},
+		"allDone": {
+			"type": "audio",
+			"path": "audio/allDone",
+			"systemId": "sound",
+			"duration": 3432
 		}
 	},
 	"environment": {

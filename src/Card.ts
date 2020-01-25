@@ -39,6 +39,8 @@ export class Card {
     referee.incrementCount();
     referee.keepChoicedCard(this);
 
+    (scene.assets["select"] as g.AudioAsset).play();
+
     if (referee.clickCount === 2) {
       for (const card of list) {
         card.back.touchable = false;
@@ -48,6 +50,7 @@ export class Card {
 
     //正解した時
     if (referee.clickCount === 2 && referee.checkSameCard()) {
+      (scene.assets["ok"] as g.AudioAsset).play();
       score.addPoint(referee.continuousCurrentCount);
       list.forEach(card => {
         if (card.id === this._id) {
@@ -61,6 +64,7 @@ export class Card {
         g.game.vars.gameState.allDone = true;
         //全て完了した時点での残り時間
         g.game.vars.gameState.restTime = Math.ceil(time.now);
+        (scene.assets["allDone"] as g.AudioAsset).play();
       }
       referee.continuousCurrentCount += 1;
     }

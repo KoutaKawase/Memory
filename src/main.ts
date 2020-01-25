@@ -29,19 +29,25 @@ export function main(param: GameMainParameterObject): void {
       "m15",
       "cardBack",
       "bmpPng",
-      "glyph"
+      "glyph",
+      "finishSound",
+      "select",
+      "ok",
+      "bgm",
+      "allDone"
     ]
   });
 
   g.game.vars.gameState = { score: 0 };
   const score = new Score(g.game.vars.gameState.score);
-  const time = new Time(100);
+  const time = new Time(80);
 
   if (param.sessionParameter.totalTimeLimit) {
     time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
   }
 
   scene.loaded.add(() => {
+    (scene.assets["bgm"] as g.AudioAsset).play();
     //3*10で計30枚のカードのデッキを作成
     const deck = new Deck();
     deck.init(scene);
@@ -83,6 +89,8 @@ export function main(param: GameMainParameterObject): void {
 
     const updateHandler = () => {
       if (time.now <= 0) {
+        (scene.assets["bgm"] as g.AudioAsset).stop();
+        (scene.assets["finishSound"] as g.AudioAsset).play();
         for (const card of deck.cardList) {
           card.back.touchable = false;
           card.back.modified();
