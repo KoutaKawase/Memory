@@ -3,6 +3,8 @@ export class Score {
   private _label: g.Label;
   static readonly labelX = 20;
   static readonly labelY = 15;
+  //正解したときの入るポイント
+  static readonly defaultPoint = 3000;
 
   constructor(score: number) {
     this._score = score;
@@ -15,10 +17,10 @@ export class Score {
   public addPoint(currentCount: number): void {
     if (currentCount > 0) {
       //連続正解１回なら1.1倍 二回なら1.2倍にする
-      this._score += 3000 * (1 + currentCount / 10);
+      this._score += Score.defaultPoint * (1 + currentCount / 10);
       return;
     }
-    this._score += 3000;
+    this._score += Score.defaultPoint;
   }
 
   public calcFinalScore(): number {
