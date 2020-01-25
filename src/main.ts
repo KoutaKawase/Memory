@@ -75,16 +75,19 @@ export function main(param: GameMainParameterObject): void {
     //全てのカードにクリックハンドラ設定
     for (const card of deck.cardList) {
       card.back.pointDown.add(() => {
-        card.handleClick(scene, board.group, referee, deck.cardList);
+        card.handleClick(scene, referee, deck.cardList, score);
       });
     }
 
     scene.append(board.group);
-    //プレイヤーが好きな二枚を選び裏を見る
-    //同じ数字であればその二枚を画面から消し5000pt追加　異なる場合伏せてもう一度
 
     const updateHandler = () => {
       if (time.now <= 0) {
+        for (const card of deck.cardList) {
+          card.back.touchable = false;
+          card.back.modified();
+        }
+
         // RPGアツマール環境であればランキングを表示します
         if (param.isAtsumaru) {
           const boardId = 1;
@@ -100,6 +103,9 @@ export function main(param: GameMainParameterObject): void {
       time.now -= 1 / g.game.fps;
       time.label.text = "TIME " + time.now;
       time.label.invalidate();
+
+      score.label.text = score.score + "Pt";
+      score.label.invalidate();
     };
     scene.update.add(updateHandler);
     // ここまでゲーム内容を記述します

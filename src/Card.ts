@@ -1,3 +1,4 @@
+import { Score } from "./Score";
 import { Referee } from "./Referee";
 
 export class Card {
@@ -27,9 +28,9 @@ export class Card {
 
   public handleClick(
     scene: g.Scene,
-    group: g.E,
     referee: Referee,
-    list: Card[]
+    list: Card[],
+    score: Score
   ) {
     referee.incrementCount();
     referee.keepChoicedCard(this);
@@ -43,6 +44,7 @@ export class Card {
 
     //正解した時
     if (referee.clickCount === 2 && referee.checkSameCard()) {
+      score.addPoint();
       list.forEach(card => {
         if (card.id === this._id) {
           card.back.destroy();

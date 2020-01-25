@@ -12,6 +12,10 @@ export class Score {
     return this._score;
   }
 
+  public addPoint(): void {
+    this._score += 3000;
+  }
+
   set label(label: g.Label) {
     this._label = label;
   }
