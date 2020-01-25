@@ -35,7 +35,7 @@ export function main(param: GameMainParameterObject): void {
 
   g.game.vars.gameState = { score: 0 };
   const score = new Score(g.game.vars.gameState.score);
-  const time = new Time(100);
+  const time = new Time(10);
 
   if (param.sessionParameter.totalTimeLimit) {
     time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
@@ -87,6 +87,8 @@ export function main(param: GameMainParameterObject): void {
           card.back.touchable = false;
           card.back.modified();
         }
+
+        g.game.vars.gameState.score = score.calcFinalScore();
 
         // RPGアツマール環境であればランキングを表示します
         if (param.isAtsumaru) {

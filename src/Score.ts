@@ -16,6 +16,10 @@ export class Score {
     this._score += 3000;
   }
 
+  public calcFinalScore(): number {
+    return this._score * 10;
+  }
+
   set label(label: g.Label) {
     this._label = label;
   }
