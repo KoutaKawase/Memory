@@ -88,10 +88,6 @@ export function main(param: GameMainParameterObject): void {
           card.back.modified();
         }
 
-        if (g.game.vars.gameState.allDone) {
-          console.log("REST: " + g.game.vars.gameState.restTime);
-        }
-
         g.game.vars.gameState.score = score.calcFinalScore();
 
         // RPGアツマール環境であればランキングを表示します
