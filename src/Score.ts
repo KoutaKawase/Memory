@@ -24,7 +24,12 @@ export class Score {
   }
 
   public calcFinalScore(): number {
-    return this._score * 10;
+    //制限時間内に全て終わっていたら残り秒*100を加算する
+    if (g.game.vars.gameState.allDone) {
+      const rest: number = g.game.vars.gameState.restTime;
+      return this._score + rest * 100;
+    }
+    return this._score;
   }
 
   set label(label: g.Label) {

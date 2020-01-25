@@ -89,7 +89,7 @@ export function main(param: GameMainParameterObject): void {
         }
 
         if (g.game.vars.gameState.allDone) {
-          console.log("REST: " + g.game.vars.gameState.restTIme);
+          console.log("REST: " + g.game.vars.gameState.restTime);
         }
 
         g.game.vars.gameState.score = score.calcFinalScore();

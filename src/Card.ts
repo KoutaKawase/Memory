@@ -60,7 +60,7 @@ export class Card {
       if (referee.isAllDone(board)) {
         g.game.vars.gameState.allDone = true;
         //全て完了した時点での残り時間
-        g.game.vars.gameState.restTIme = Math.ceil(time.now);
+        g.game.vars.gameState.restTime = Math.ceil(time.now);
       }
       referee.continuousCurrentCount += 1;
     }
