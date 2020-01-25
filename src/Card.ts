@@ -77,11 +77,11 @@ export class Card {
     //二回目の時だけ元に戻す処理をする
     if (referee.clickCount === 2) {
       scene.setTimeout(() => {
-        this.back.opacity = 0;
+        this.back.opacity = 1;
         this.back.modified();
 
         //１つめに選んだモノを元に戻す
-        referee.choicedCard[0].back.opacity = 0;
+        referee.choicedCard[0].back.opacity = 1;
 
         for (const card of list) {
           card.back.touchable = true;
