@@ -41,11 +41,16 @@ export class Card {
       }
     }
 
-    console.log("COUNT: " + referee.clickCount);
-
     //正解した時
     if (referee.clickCount === 2 && referee.checkSameCard()) {
-      console.log("TRUE");
+      list.forEach(card => {
+        if (card.id === this._id) {
+          card.back.destroy();
+          card.back.modified();
+          card.surface.destroy();
+          card.surface.modified();
+        }
+      });
     }
 
     this.back.opacity = 0;
@@ -69,7 +74,7 @@ export class Card {
 
         referee.resetChoicedCards();
         referee.resetCount();
-      }, 1300);
+      }, 500);
     }
   }
 
