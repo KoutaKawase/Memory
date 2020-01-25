@@ -14,6 +14,7 @@
 ## 🤔 Usage
 
 普通に神経衰弱するだけです
+Akashic Engine 製
 
 ## 👌 LICENSE
 
