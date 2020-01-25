@@ -4,7 +4,7 @@ export class Score {
   static readonly labelX = 20;
   static readonly labelY = 15;
   //正解したときの入るポイント
-  static readonly defaultPoint = 3000;
+  static readonly defaultPoint = 2000;
 
   constructor(score: number) {
     this._score = score;
