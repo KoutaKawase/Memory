@@ -101,7 +101,7 @@ export function main(param: GameMainParameterObject): void {
       }
 
       time.now -= 1 / g.game.fps;
-      time.label.text = "TIME " + time.now;
+      time.label.text = "TIME " + Math.ceil(time.now);
       time.label.invalidate();
 
       score.label.text = score.score + "Pt";
