@@ -43,7 +43,7 @@ export function main(param: GameMainParameterObject): g.Scene {
   const time = new Time(60);
 
   if (param.sessionParameter.totalTimeLimit) {
-    time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
+    time.limit = param.sessionParameter.totalTimeLimit - 11; // セッションパラメータで制限時間が指定されたらその値を使用します
   }
 
   scene.loaded.add(() => {
