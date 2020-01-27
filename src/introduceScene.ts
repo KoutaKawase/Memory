@@ -18,7 +18,7 @@ export function introduce(param: GameMainParameterObject) {
     scene.append(sprite);
     scene.setTimeout(() => {
       g.game.replaceScene(main(param));
-    }, 8000);
+    }, 3000);
   });
   g.game.pushScene(scene);
 }

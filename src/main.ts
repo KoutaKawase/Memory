@@ -40,10 +40,10 @@ export function main(param: GameMainParameterObject): g.Scene {
 
   g.game.vars.gameState = { score: 0 };
   const score = new Score(g.game.vars.gameState.score);
-  const time = new Time(70);
+  const time = new Time(60);
 
   if (param.sessionParameter.totalTimeLimit) {
-    time.limit = param.sessionParameter.totalTimeLimit - 10; // セッションパラメータで制限時間が指定されたらその値を使用します
+    time.limit = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
   }
 
   scene.loaded.add(() => {
